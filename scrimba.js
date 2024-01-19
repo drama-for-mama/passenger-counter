@@ -1,11 +1,18 @@
-let countEl = document.getElementById('count-el');
-let count = 0;
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.getElementById('changeColorBtn');
+  const container = document.querySelector('.container');
 
-function increment() {
-  count = count + 1;
-  countEl.innerText = count;
-};
+  button.addEventListener('click', function () {
+      const randomColor = getRandomColor();
+      container.style.backgroundColor = randomColor;
+  });
 
-function save(){
-  console.log(count);
-}
+  function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+  }
+});
